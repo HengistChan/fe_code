@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  /**
+   * 1.计算出差值d,最小值小于0,加上本身add
+   * 2.创建统计数组并统计对应元素个数
+   * 3.统计数组做变形，后面的元素等于前面的元素之和,也就是排名数组
+   * 4.遍历原始数组,从统计数组中找到正确位置,输出到结果数组
+   * @param arr
+   * @returns {*[]|number}
+   */
+  const countingSort = (arr) => {
+    if (arr.length === 0)
+      return 0
+    let min = arr[0], max = arr[0]
+    arr.forEach(value => {
+      min = min > value ? value : min
+      max = max < value ? value : max
+    })
+    const arr_len = max - min + 1
+    const sortWithArr = Array(arr_len).fill(0)
+    arr.forEach(value => {
+      sortWithArr[value - min]++
+    })
+    let sortedArr = []
+    sortWithArr.forEach((value, index) => {
+      sortedArr = [...sortedArr, ...Array(sortWithArr[index]).fill(min + index)]
+    })
+    return sortedArr
+  }
+
+  console.log(countingSort([2, 9, 6, 7, 4, 3, 1, 7,0,-1,-2]))
+
+</script>
+
+</body>
+</html>
