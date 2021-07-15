@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  /**
+   * 快速排序
+   * @param arr
+   * @returns {*}
+   */
+  const quickSort = (arr) => {
+    const partition = (sub_arr, start, end) => {
+      const type = sub_arr[start]
+      while (start < end) {
+        while (start < end && type <= sub_arr[end]) {
+          end--
+        }
+        if (start < end) sub_arr[start] = sub_arr[end]
+        while (start < end && type >= sub_arr[start]) {
+          start++
+        }
+        if (start < end) sub_arr[end] = sub_arr[start]
+      }
+      sub_arr[start] = type
+      return start
+    }
+
+    const sort = (a, start, end) => {
+      if (start < end) {
+        const p = partition(a, start, end)
+        sort(a, start, p - 1)
+        sort(a, p + 1, end)
+      }
+    }
+    sort(arr, 0, arr.length - 1)
+    return arr
+  }
+
+  const quickSortWithRandomIndex = (arr) => {
+    const randomPartition = (_arr, start, end) => {
+      // 注意范围
+      const randomIndex = Math.round(Math.random() * (end - start) + start);
+      console.log(randomIndex, start, end);
+      ;[_arr[start], _arr[randomIndex]] = [_arr[randomIndex], _arr[start]];
+      const type = _arr[start]
+      while (start < end) {
+        while (start < end && type <= _arr[end]) {
+          end--
+        }
+        _arr[start] = _arr[end]
+        while (start < end && type >= _arr[start]) {
+          start++
+        }
+        _arr[end] = _arr[start]
+      }
+      _arr[start] = type
+      return start
+    }
+
+    const sort = (_arr, start, end) => {
+      if (start < end) {
+        const p = randomPartition(_arr, start, end)
+        sort(_arr, start, p - 1)
+        sort(_arr, p + 1, end)
+      }
+    }
+    sort(arr, 0, arr.length - 1)
+    return arr
+  }
+
+  const quickSortWithCountingIndex = (arr) => {
+    const countPartition = (_arr, start, end) => {}
+    const partition = (_arr, start, end) => {
+      const _index = countPartition(_arr, start, end), type = _arr[_index]
+    }
+  }
+
+  const isSorted = (arr) => {
+    return arr.every((val, idx, _arr) => {
+      if (idx !== _arr.length - 1) {
+        return val <= _arr[idx + 1]
+      }
+      return true
+    })
+  }
+
+</script>
+
+</body>
+</html>
