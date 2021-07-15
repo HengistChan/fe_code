@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  const insertedSort = (arr) => {
+    const len = arr.length
+    if (len <= 1)
+      return arr
+    for (let i = 0; i < len; i++) {
+      let j = i - 1, cv = arr[i]
+      while (j >= 0) {
+        if (cv > arr[j])
+          break
+        arr[j + 1] = arr[j]
+        j--
+      }
+      arr[j + 1] = cv
+    }
+    return arr
+  }
+
+  console.log(insertedSort([...Array(10).fill(10).map((item, index) => 10 - index), 7]))
+
+</script>
+
+</body>
+</html>
