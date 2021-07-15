@@ -10,17 +10,23 @@
 <body>
 
 <script>
-
+  /**
+   * 选择排序
+   * https://www.runoob.com/w3cnote/selection-sort.html
+   * @param arr
+   * @returns {*}
+   */
   const selectedSort = (arr) => {
     const _len = arr.length
     for (let i = 0; i < arr.length - 1; i++) {
-      let pos = 0
-      for (let j = 0; j < arr.length - i; j++) {
-        if (arr[pos] < arr[j]) {
+      let pos = i
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j] < arr[pos])
           pos = j
-        }
       }
+      [arr[i], arr[pos]] = [arr[pos], arr[i]];
     }
+    return arr
   }
 
 </script>
