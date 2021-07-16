@@ -8,7 +8,24 @@
 
 <script>
 
+function add(a, b) {
+    return Promise.resolve(a + b)
+}
 
+function sum(arr) {
+    let sum_arr = 0
+    sum_arr = arr.reduce(async (prev, curr, index, arr) => {
+        let temp;
+        await add(prev, curr).then(res => {
+            console.log(res)
+            temp = res
+        })
+        await return temp
+    }, 0)
+    return sum_arr
+}
+
+console.log(sum([1, 2, 3]))
 
 </script>
 </body>

@@ -11,6 +11,11 @@
 
 <script>
 
+  /**
+   * 直接插入排序
+   * @param arr
+   * @returns {*}
+   */
   const insertedSort = (arr) => {
     const len = arr.length
     if (len <= 1)
@@ -28,7 +33,29 @@
     return arr
   }
 
-  console.log(insertedSort([...Array(10).fill(10).map((item, index) => 10 - index), 7]))
+  const binarySearchInsertedSort = (arr) => {
+    const len = arr.length
+    if (len <= 1)
+      return arr
+    for (let i = 0 ; i < len ; i++) {
+      let left = 0, right = i - 1, mid, cv = arr[i]
+      while (left <= right) {
+        mid = Math.floor((left + right) / 2)
+        if (arr[mid] < cv) {
+          left = mid + 1
+        } else {
+          right = mid - 1
+        }
+      }
+      for (let j = i; j > right + 1; j--) {
+        arr[j] = arr[j - 1]
+      }
+      arr[left] = cv
+    }
+    return arr
+  }
+
+  console.log(binarySearchInsertedSort([...Array(10).fill(0).map((i, ii) => 10 - ii), 7]))
 
 </script>
 
