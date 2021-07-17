@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  const mergeSort = (arr) => {
+    const sort = (_arr) => {
+      if (_arr.length < 2)
+        return _arr;
+      let mid = Math.floor(_arr.length / 2)
+      return merge(sort(_arr.slice(0, mid)), sort(_arr.slice(mid)))
+    }
+
+    const merge = (arr1, arr2) => {
+      const arr = []
+      let l = 0, r = 0
+      while (l < arr1.length && r < arr2.length) {
+        if (arr1[l] < arr2[r]) {
+          arr.push(arr1[l++])
+        } else {
+          arr.push(arr2[r++])
+        }
+      }
+      if (l >= arr1.length) {
+        arr.push(...arr2.slice(r))
+      } else {
+        arr.push(...arr1.slice(l))
+      }
+      return arr
+    }
+    return sort(arr)
+  }
+
+  console.log(mergeSort([...Array(10).fill(0).map((i, ii) => 10 - ii), 7]))
+
+</script>
+
+</body>
+</html>

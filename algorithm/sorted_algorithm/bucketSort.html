@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  const BucketSort = (arr) => {
+    const INIT_BUCKET_COUNT = 5
+    let _max = Number.NEGATIVE_INFINITY, _min = Number.POSITIVE_INFINITY
+    arr.forEach(val => {
+      _max = Math.max(_max, val)
+      _min = Math.min(_min, val)
+    })
+    const buckets = []
+    for (let i = 0; i < 5; i++) {
+      buckets.push([])
+    }
+    arr.forEach(val => buckets[Math.floor((val - _min) / INIT_BUCKET_COUNT)].push(val))
+    arr.length = []
+    buckets.forEach(item => {
+      item.sort((a, b) => a - b)
+      item.forEach(val => arr.push(val))
+    })
+    return arr
+  }
+
+  console.log(BucketSort([...Array(10).fill(0).map((i, ii) => 10 - ii)]))
+</script>
+
+</body>
+</html>
