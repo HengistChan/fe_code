@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  // [1].reduce()
+  Array.prototype.myReduce = function (callback, initValue) {
+    // (prev, next, index, array) => {}, initValue
+    if (this == null)
+      return new Error()
+    if (Object.prototype.toString.call(callback) !== '[object Function]')
+      throw new Error()
+    let O = Object(this)
+    let len = O.length >>> 0
+    if (initValue == null && len === 0) {
+      throw new Error()
+    }
+    let res = initValue ? initValue : O[0]
+    let k = initValue ? 0 : 1
+    while (k < len) {
+      res = callback.call(null, res, O[k], k, O)
+      k++
+    }
+    return res
+  }
+
+  const arr = [1,2,3,4,5]
+  console.log(arr.myReduce((prev, next, index, array) => {
+    return next === 5 ? prev : prev + next
+  }, 0))
+
+  const a = []
+
+  console.log(a.reduce(() => {}, 1))
+
+</script>
+
+</body>
+</html>

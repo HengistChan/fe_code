@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+  Array.prototype.mySlice = function (startIndex, endIndex) {
+    let O = this, len = O.length
+    if (startIndex == null) throw new Error()
+    if (endIndex == null) endIndex = len
+    startIndex = Number(startIndex)
+    endIndex = Number(endIndex)
+    // 如果把 NaN 与任何值（包括其自身）相比得到的结果均是 false
+    if (isNaN(startIndex) || isNaN(endIndex)) {
+      throw new Error()
+    }
+    startIndex < 0 && (startIndex = len + startIndex)
+    endIndex < 0 && (endIndex = len + endIndex)
+    console.log(endIndex, len)
+    if (startIndex > endIndex || endIndex > len) throw new Error()
+    let k = startIndex
+    let A = []
+    while (k < endIndex) {
+      A.push(O[k])
+      k++
+    }
+    return A
+  };
+  console.log([1, 2, 3, 4, 5, 6, 7, 8, 9].mySlice(-3));
+</script>
+
+</body>
+</html>

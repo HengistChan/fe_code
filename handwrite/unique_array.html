@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  const uniqueArr = (arr) => {
+    let _res = [], isRepeat = false;
+    for (let i = 0; i < arr.length; i++) {
+      isRepeat = false;
+      for (let j = 0; j < i; j++) {
+        if (arr[i] === arr[j]) {
+          isRepeat = true;
+          break;
+        }
+      }
+      if (isRepeat === false)
+        _res.push(arr[i])
+    }
+    return _res;
+  }
+
+  const uniqueArrayWithEs2015 = (arr) => {
+    return arr.filter((value, index, array) => {
+      return array.indexOf(value) === index
+    })
+  }
+
+  const uniqueArrayWithEs2016 = (arr) => {
+    return Array.from(new Set(arr))
+  }
+
+  console.log(uniqueArrayWithEs2016([1,1, 2, 3, 4, 5, 6, 6, 1, 1]))
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="vh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  Array.prototype.myMap = function (callback, thisArg) {
+    if (this == null)
+      return new Error()
+    if (Object.prototype.toString.call(callback) !== '[object Function]')
+      throw new Error()
+    let O = Object(this)
+    let len = O.length >>> 0
+    let k = 0
+    let A = []
+    while(k < len) {
+      if (k in O) {
+        A[k] = callback.call(thisArg, O[k], k, O)
+      }
+      k++
+    }
+    return A
+  }
+
+  const arr = [1,2,3,4,5]
+  console.log(arr.myMap((value, index, array) => {
+    console.log(value, index, array)
+    return 1
+  }))
+
+</script>
+
+</body>
+</html>

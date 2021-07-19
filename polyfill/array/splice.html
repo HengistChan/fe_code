@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  Array.prototype.mySplice = function (startIndex, deleteNum, ...args) {
+    let O = Object(this), len = O.length;
+    startIndex = Number(startIndex);
+    deleteNum == null && (deleteNum = len - 1);
+    deleteNum = Number(deleteNum);
+    if (isNaN(startIndex) || isNaN(deleteNum))
+      throw new Error();
+    startIndex < 0 && (startIndex += len);
+    deleteNum > len && (deleteNum = len);
+    startIndex > len && (startIndex = len);
+
+    let start, end;
+    start = startIndex;
+    end = start + deleteNum >= len ? len : start + deleteNum
+    console.log(start, end)
+  };
+
+  let arr = [1, 2, 3, 4]
+  console.log(arr.splice(-13))
+  console.log(arr)
+</script>
+
+</body>
+</html>

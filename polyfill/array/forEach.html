@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  Array.prototype.myForEach = function (callback, thisArg) {
+    if (this == null)
+      return new Error()
+    if (Object.prototype.toString.call(callback) !== '[object Function]')
+      throw new Error()
+    let O = Object(this)
+    let len = O.length >>> 0
+    let k = 0
+    while(k < len) {
+      if (k in O) {
+        callback.call(thisArg, O[k], k, O)
+      }
+      k++
+    }
+  }
+  const arr = [1,2,3,4,5]
+  arr.myForEach(function (value, index, arr) {
+    console.log(value, index, arr, this)
+  }, {})
+
+</script>
+
+</body>
+</html>
