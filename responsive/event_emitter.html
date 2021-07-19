@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  // 事件总线（订阅发布模式）
+  /**
+   * 1. 松散耦合，灵活度高，常用作事件总线
+   * 2. 易理解，可类比于DOM事件中的dispatchEvent和addEventListener
+   * 3.
+   */
+  class EventEmitter {
+    constructor() {
+      this.listerens = {}
+    }
+
+    on(type, cb) {
+      if (!this.listerens[type]) {
+        this.listerens[type] = []
+      }
+      this.listerens[type].push(cb)
+    }
+
+    emit(type, ...args) {
+      if (this.listerens[type]) {
+        this.listerens[type].forEach(fn => {
+          fn(...args)
+        })
+      }
+    }
+
+    remove(type, cb) {
+      if (this.listerens[type]) {
+        const index = this.listerens[type].findIndex(item => item === cb)
+        if (index !== -1) {
+          this.listerens[type].splice(index, 1)
+        }
+        if (this.listerens[type].length === 0) {
+          delete this.listerens[type]
+        }
+      }
+    }
+  }
+
+</script>
+
+</body>
+</html>

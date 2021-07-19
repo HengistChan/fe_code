@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  /**
+   * 观察者模式
+   * 1. 发布订阅模式实际上就是回调函数的调用
+   * 2. 观察者模式一般用来实现响应式的效果
+   * 3. 观察者需要实现update方法，供目标对象调用。update可以执行自定义的业务代码
+   * 4. 目标对象一般被称为观察者或者Subject，它的职责很单一，只管理一种事情。
+   * 5. Subject需要维护自身的observerList，当自身发生变化时，通过调用自身的notify方法，依次通知每一个观察者执行update方法
+   */
+  class Observer {
+    constructor(cb) {
+      if (typeof cb === 'function') {
+        this.cb = cb
+      } else {
+        throw new Error('')
+      }
+    }
+
+    update() {
+      this.cb()
+    }
+  }
+
+  class Subject {
+    constructor() {
+      this.observerList = []
+    }
+
+    /**
+     * 添加一个观察者
+     * @param ob
+     */
+    addObserver(ob) {
+      this.observerList.push(ob)
+    }
+
+    notify() {
+      this.observerList.forEach(observer => {
+        observer.update()
+      })
+    }
+  }
+
+</script>
+
+</body>
+</html>
