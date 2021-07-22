@@ -11,17 +11,22 @@
 
 <script>
 
-  const shallowClone = (obj) => {
-    if (typeof obj !== 'object') return
-    const new_o = obj instanceof Array ? [] : {}
-    for (const objKey in obj) {
-      if (obj.hasOwnProperty(objKey)) {
-        new_o[objKey] = obj[objKey]
-      }
-    }
-    return new_o
+  function getNullPromise() {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(1)
+      }, 5000)
+    })
   }
 
+  async function g() {
+    console.log(1)
+    const a = await getNullPromise()
+    console.log(a)
+    console.log(2)
+  }
+
+  g()
 
 </script>
 

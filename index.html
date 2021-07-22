@@ -1,29 +1,69 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+
+      .two-column-layout {
+          width: 400px;
+          height: 400px;
+      }
+
+      .left {
+          float: left;
+          width: 100px;
+          height: 100%;
+          background-color: #f66;
+      }
+
+      .right {
+          overflow: hidden;
+          height: 100%;
+          background-color: #66f;
+      }
+
+      .main {
+          width: 100px;
+      }
+
+      .inner {
+          width: 50px;
+          height: 50px;
+          background-color: #f66;
+          margin-top: 20px;
+      }
+
+  </style>
 </head>
 <body>
 
-<script>
+<div class="main">
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+  <div class="inner"><button>del</button></div>
+</div>
 
-  let o = {b:1, a: 1}
-  o[Symbol.iterator] = function () {
-    let time = 0
-    return {
-      next: function () {
-        time++
-        return {
-          done: time > 10,
-          value: time
-        }
-      }
+<script>
+  function chunk (list, size) {
+    const l = []
+    for (let i = 0; i < list.length; i++ ) {
+      const index = Math.floor(i / size)
+      l[index] ??= [];
+      l[index].push(list[i])
     }
+    return l
   }
-  for (let oKey of o) {
-    console.log(oKey)
-  }
+
+  console.log(chunk([1, 2, 3, 4, 5, 6, 7, 8], 3))
+
 
 </script>
 </body>

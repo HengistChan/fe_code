@@ -6,24 +6,15 @@
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="./flex.css">
 </head>
 <body>
 
-<script>
-
-  const shallowClone = (obj) => {
-    if (typeof obj !== 'object') return
-    const new_o = obj instanceof Array ? [] : {}
-    for (const objKey in obj) {
-      if (obj.hasOwnProperty(objKey)) {
-        new_o[objKey] = obj[objKey]
-      }
-    }
-    return new_o
-  }
-
-
-</script>
+<div class="container block-01">
+  <div class="dot"></div>
+  <div class="dot"></div>
+  <div class="dot"></div>
+</div>
 
 </body>
 </html>
