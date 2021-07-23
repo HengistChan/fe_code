@@ -22,6 +22,19 @@
     return new_o
   }
 
+  const deepClone = (obj, num = -1, cur = 0) => {
+    let nObj = {}
+    for (const key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        if (typeof obj[key] === 'object')
+          nObj[key] = deepClone(obj[key])
+        else
+          nObj[key] = obj[key]
+      }
+    }
+    return nObj
+  }
+
 
 </script>
 

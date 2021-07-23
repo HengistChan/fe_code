@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+<div>
+  <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">new operators</a>
+  <br>
+  <img src="./img/new_opt.png" alt="">
+</div>
+<script>
+
+  /**
+   * 1. Creates a blank, plain JavaScript object.
+   * 2. Adds a property to the new object (__proto__) that links to the constructor function's prototype object.
+   * 3. Binds the newly created object instance as the this context (i.e. all references to this in the constructor function now refer to the object created in the first step).
+   * 4. Returns this if the function doesn't return an object.
+   */
+  function new_operator (constructor, ...args) {
+    const o = Object.create({})
+    o['__proto__'] = constructor.prototype
+    const res = constructor.apply(o, args) // 将constructor上的this绑定的实例并绑定到o中
+    return typeof res === 'object' ? res : o
+  }
+
+  function Foo() {
+    this.a = 1
+  }
+
+  console.log(new_operator(Foo))
+  console.log(new Foo())
+</script>
+
+</body>
+</html>
