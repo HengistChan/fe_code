@@ -53,22 +53,21 @@
 
 <script>
 
-  function Father() {
-    this.a = 1
-  }
+ a = 1
+ function func() {
+   const b = 1
+   function f() {
+     const bb = 1
+     console.log(b)
+   }
 
-  Father.b = 2
+   console.dir(f);
+ }
 
-  function Son() {
-    Father.call(this)
-    this.a = 3
-  }
+ func()
 
-  Son.prototype = Object.create(Father.prototype, {
-    constructor: {
-      value: Son
-    }
-  })
+ console.dir(func)
+
 </script>
 </body>
 </html>
