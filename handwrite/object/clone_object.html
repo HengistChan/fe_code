@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  const shallowClone = (obj) => {
+    if (typeof obj !== 'object') return
+    const new_o = obj instanceof Array ? [] : {}
+    for (const objKey in obj) {
+      if (obj.hasOwnProperty(objKey)) {
+        new_o[objKey] = obj[objKey]
+      }
+    }
+    return new_o
+  }
+
+  const set = new Set()
+  const deepClone = (obj, num = -1, cur = 0) => {
+    let nObj = {}
+    if (num < 0 || num > cur) {
+      for (const [key, value] of Object.entries(obj)) {
+        if (typeof value === 'object') {
+          if (set.has(value)) {
+            nObj[key] = {...value}
+          } else {
+            set.add(value)
+            nObj[key] = deepClone(value)
+          }
+        } else {
+          nObj[key] = value
+        }
+      }
+    } else {
+      Object.assign(nObj, obj)
+    }
+    return nObj
+  }
+
+  const a = {
+    b: {
+      c: {
+        d: {
+          e: 3
+        }
+      }
+    }
+  }
+
+
+</script>
+
+</body>
+</html>

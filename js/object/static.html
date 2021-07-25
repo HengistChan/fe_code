@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ch">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  // Object.length
+  console.log(Object.length) // 1
+
+  //Object.assign()：同名属性覆盖minix
+  const obj1 = {a: 1, b: 2}, obj2 = {b: 3, c: 4}
+  console.log(Object.assign(obj1, obj2)) // {a: 1, b: 3, c: 4}
+
+  //Object.create()
+  const obj3 = {a: 1, b: 2}
+  console.log(Object.create(obj1, {c: {value: 3, enumerable: true}})) // {c: 3, __proto__: {a: 1, b:2}}
+
+  //Object.defineProperty()
+  const obj4 = {a: 1}
+  console.log(Object.defineProperty(obj4, 'bb', {value: 2, enumerable: true, configurable: true, writable: true})) // {a: 1, bb: 2}
+
+  // Object.entries()
+  console.log(Object.entries(obj1)) // [["a", 1], ["b", 3], ["c", 4]]
+
+  // Object.freeze()、Object.isFrozen()
+  obj1.c = 3
+  console.log(obj1) // {a: 1, b: 3, c: 3}
+  Object.freeze(obj1)
+  obj1.c = 5
+  delete obj1.a
+  console.log(obj1) // {a: 1, b: 3, c: 3}
+  console.log(Object.isFrozen(obj1)) // true
+
+  // Object.getOwnPropertyDescriptor()、Object.getOwnPropertyNames()、Object.getPrototypeOf()
+  console.log(obj3) // {a: 1, b: 2}
+  const obj5 = Object.create(obj3, {c: {value: 3, enumerable: true}}) // {c: 3, __proto__: {a: 1, b:2}}
+  console.log(Object.defineProperty(obj5, 'cc', {value: 11, enumerable: true})) // {c: 3, cc: 11, __proto__: {a: 1, b:2}}
+  console.log(Object.getOwnPropertyDescriptor(obj5, 'c')) // {value: 3, writable: false, enumerable: true, configurable: false}
+  console.log(Object.getOwnPropertyNames(obj5)) // ["c", "cc"]
+  for (const obj5Key in obj5) {
+    console.log(obj5Key) // c, cc, a, b
+  }
+  console.log(Object.getPrototypeOf(obj5)) // {a: 1, b: 2}
+
+  // Object.is()
+  console.log(Object.is(-0, 0), Object.is(NaN, NaN), NaN == NaN, NaN === NaN, isNaN(NaN)) //false true false false true
+
+  // Object.seal()、Object.isSealed()
+  let obj6 = {a: 1, b: 2, c: {d: 3}}
+  let arr = [1, 2, [3]]
+  console.log(Object.seal(obj6)) // {a: 1, b: 2, c: {d: 3}}
+  obj6.a = 2
+  console.log(obj6) // {a: 2, b: 2, c: {d: 3}}
+  obj6.bb = 3
+  console.log(obj6) // {a: 2, b: 2, c: {d: 3}}
+  obj6.c.cc = 3 // {a: 2, b: 2, c: {d: 3, cc: 3}}
+  Object.isSealed(obj6) // true
+  console.log(Object.seal(arr)) // [1, 2, [3]]
+  // console.log(arr.push(1)) // Uncaught TypeError: Cannot add property 3, object is not extensible
+  arr[0] = 55
+  console.log(Object.isSealed(arr), Object.isSealed(arr[2]), Object.isSealed(arr[2])) // true false false
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+<script>
+
+  let o = {a: 1, b: {c: 2, d: {e: 3}}}
+  function freeze_obj(o) {
+    o = Object(o)
+    Object.freeze(o)
+    for (const oKey in o) {
+      if (o.hasOwnProperty(oKey)) {
+        if (typeof o[oKey] === 'object')
+          freeze_obj(o[oKey])
+        console.log(oKey)
+      }
+    }
+  }
+  // freeze_obj(o)
+  Object.freeze(o)
+  Object.freeze(o.b)
+  o.a = 2
+  o.b = {}
+  console.log(o)
+  console.log(o)
+  o.b.d = {}
+  console.log(o)
+
+</script>
+
+</body>
+</html>
