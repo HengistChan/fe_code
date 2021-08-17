@@ -4,61 +4,55 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <style>
-
-      .two-column-layout {
-          width: 400px;
-          height: 400px;
-      }
-
-      .left {
-          float: left;
-          width: 100px;
-          height: 100%;
-          background-color: #f66;
-      }
-
-      .right {
-          overflow: hidden;
-          height: 100%;
-          background-color: #66f;
-      }
-
-      .main {
-          width: 100px;
-      }
-
-      .inner {
-          width: 50px;
-          height: 50px;
-          background-color: #f66;
-          margin-top: 20px;
-      }
-
+    div { width: 200px; height: 200px; overflow:auto; background: gray; }
   </style>
 </head>
 <body>
-
-<div class="main">
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-  <div class="inner"><button>del</button></div>
-</div>
-
 <script>
-
-  function new_func(func, ...args) {
-    const o = Object.create(null)
-    o.__proto__ = func.prototype
-    const res = func.call(o, ...args)
-    return typeof res != null && res === 'object' ? res : o
+  function delay(time) {
+    return new Promise(resolve => setTimeout(resolve, time))
   }
+
+  async function act() {
+    while (1) {
+      console.log('green');
+      await delay(3)
+      console.log('yellow');
+      await delay(2)
+      console.log('red');
+      await delay(1)
+    }
+  }
+
+  // act()
+
+  // async function start() {
+  //   for (let i = 0; i < 10; i++) {
+  //     await new Promise(resolve => setTimeout(() => {
+  //       console.log(i)
+  //       resolve()
+  //     }, 1000))
+  //   }
+  // }
+  //
+  // start()
+
+  function *start() {
+    for (let i = 0 ; i < 10 ; i++) {
+      yield () => {
+        setTimeout(() => {
+          console.log(2);
+        }, 1000)
+      }
+    }
+  }
+
+  let s = start()
+  do {
+    s.next()
+    console.log(s.value)
+  } while (s.done !== true)
+
 
 </script>
 </body>
