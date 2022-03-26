@@ -1,1 +1,31 @@
-<mxfile host="app.diagrams.net" modified="2022-03-26T12:43:35.979Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" etag="v3xITj20YlGdU82yyL0y" version="16.5.5" type="github"><diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">1ZbbbpwwEIafZi4TcQ5cYmISVYoUaSvlsrLAC6iAkdcUNk9fmzUBApW2rdoQiRX2P4MP3/x4ATuq+gdOmvyJpbQEy0h7sO/Bskw3MOVNKeeL4vveRch4keqkSTgUr1SLhlbbIqWnRaJgrBRFsxQTVtc0EQuNcM66ZdqRlctZG5LRlXBISLlWX4pU5HoXrjHpj7TI8nFm09CRiozJWjjlJGXdQqK9iFkt9BKfKa9ITWshI0+Ef6ccXJwLoXYaghXL66iybzPGspKSpjjdJqyScnKSKfGRVEWpMM8GQnogOZ2NwY44Y+LSqvqIlqpWYxkua4p/EX3jwNW4VzzgZNm3o4uac/31+bX9gl9qq73Ro/wgZav5IsB3ECII5faMG/kD7IIfgH8/Cwz4xHmsCWdtnVI1jwE26vJC0ENDEhXtpAullouqlD1TNhWyg352YxPjiigXtJ9JelMPlFVU8LNMGaO+Lp42tDX2u8ke5ljgfGYNT2tElzt7G3qiKBsa5G9Ata6DGhjg408C1fY+Gqqzghq9h/ro7guiY1/hTHMDoun8K4ruiuIAEUNoqoaypDfzpnzzY0DGJzkJXG9vJ8Hd3+BGeN94P/5M8DfxIgS+A9hRDTTgRSEE9r5g2tYVXjX+69lgbrtVUgxiwP5oWw+CaDgDpFtDpeyK6/s/LsdZc3W3uP6BSWV3+nwbYrNvbhv/BA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2022-03-26T14:11:53.435Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" etag="sSI9z1-9AZjzbFg2Wlxn" version="17.2.4" type="github">
+  <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
+    <mxGraphModel dx="1591" dy="886" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4gg_f5BpynTPzuJEWn2u-1" value="B端 - 前端" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="180" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4gg_f5BpynTPzuJEWn2u-2" value="B端 - 后端" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="180" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4gg_f5BpynTPzuJEWn2u-4" value="C端 - H5" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="430" y="280" width="110" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="4gg_f5BpynTPzuJEWn2u-5" value="管理后台 - 前端" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="560" y="280" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4gg_f5BpynTPzuJEWn2u-7" value="管理后台 - BE" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="560" y="360" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="4gg_f5BpynTPzuJEWn2u-8" value="组件库" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="320" y="280" width="100" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="4gg_f5BpynTPzuJEWn2u-17" value="统计服务" style="rounded=0;whiteSpace=wrap;html=1;fontStyle=1" parent="1" vertex="1">
+          <mxGeometry x="180" y="440" width="500" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
